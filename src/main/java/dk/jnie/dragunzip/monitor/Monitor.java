@@ -17,6 +17,7 @@ public class Monitor implements Runnable {
 
 	private static SortedProperties props;
 	private volatile boolean doRun = true;
+	private static String argFolder;
 
 	static Thread t;
 	private MonitorActionController mac; 
@@ -47,10 +48,17 @@ public class Monitor implements Runnable {
 		if (props == null || !doRun) {
 			return;
 		}
-		String folder = props.getProperty(Property.MONITORFOLDER);
-		if (folder == null) {
-			return;
+		String folder = argFolder;
+		//This property is either set from property or from java start main method argument.
+		if ("".equals(folder)) {
+			folder =  props.getProperty(Property.MONITORFOLDER, argFolder);
 		}
+		if (folder == null) {
+			logger.severe("I need a folder name to monitor!");
+			return; //I need a Folder
+		}
+		
+
 		File folderObj = new File(folder);
 		boolean isDirectory = folderObj.isDirectory();
 		
@@ -132,8 +140,6 @@ public class Monitor implements Runnable {
 	}
 
 	public void setFolder(String folder) {
-		if (props != null) {
-			props.setProperty(Property.MONITORFOLDER, folder);
-		}
+		argFolder = folder;
 	}
 }
