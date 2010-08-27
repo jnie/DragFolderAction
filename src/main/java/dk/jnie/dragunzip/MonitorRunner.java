@@ -42,6 +42,14 @@ public class MonitorRunner {
 		Thread monitor = new Thread(mon, "Monitor");
 		monitor.start();
 
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			logger.fine("Could not sleep thread");
+			if (logger.isLoggable(Level.ALL)) {
+				e.printStackTrace();
+			}
+		}
 //		MonitorConsole monCon = new MonitorConsole(monitor);
 //		Thread monitorConsole = new Thread(monCon, "MonitorConsole");
 //		monitorConsole.start();
@@ -63,6 +71,7 @@ public class MonitorRunner {
 		if(!logFolder.exists()) {
 			logFolder.mkdir();
 		}
+	
 		
 		System.setProperty("java.util.logging.config.file",	"src/main/resources/logging.properties");
 		// This overwrites the current logging configuration
