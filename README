@@ -1,0 +1,17 @@
+This is a play and dismiss project.
+
+Why?
+
+- I needed to have something to do in my, in between projects. 
+And wanted to get some knowledge about Java SMF.
+
+What?
+
+- I created a program that monitors a specific folder on your harddrive, 
+and when files a dropped into the folder, the file is checked and if it is a
+known file type, the program does what it is programmed to do with that specific filetype. 
+
+How?
+- Works on Windows, not sure about Linux.
+- The Runner class starts up a Monitor, when files are found, it gives control to a control class,
+that then again will route the control to the filehandler action class.

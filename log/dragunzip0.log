@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2010-08-26T15:57:56</date>
+  <millis>1282831076753</millis>
+  <sequence>0</sequence>
+  <logger>dk.jnie.dragunzip</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.Monitor</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>No. of new files: 0</message>
+</record>
+</log>
