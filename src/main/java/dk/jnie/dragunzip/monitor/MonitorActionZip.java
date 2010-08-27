@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Enumeration;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
@@ -17,9 +18,10 @@ import dk.jnie.dragunzip.initializer.Property;
 public class MonitorActionZip implements MonitorActionInterface {
 	static Logger logger = Logger.getLogger("dk.jnie.dragunzip");
 	static SortedProperties props;
+	private File file;
 	
 	@Override
-	public void doAction(File file) {
+	public void doAction() {
 		props = Property.getProps();
 		String outputFolder = props.getProperty(Property.OUTPUTFOLDER, "c:\\temp\\");
 		File output = new File(outputFolder);
@@ -62,8 +64,10 @@ public class MonitorActionZip implements MonitorActionInterface {
 
 			zipFile.close();
 		} catch (IOException ioe) {
-			logger.info("Unhandled exception:");
-			ioe.printStackTrace();
+			logger.warning("Unhandled exception: " + ioe.getMessage());
+			if (logger.isLoggable(Level.ALL)) {
+				ioe.printStackTrace();
+			}
 			return;
 		}
 	}
@@ -78,5 +82,16 @@ public class MonitorActionZip implements MonitorActionInterface {
 
 		in.close();
 		out.close();
+	}
+
+	@Override
+	public void setFile(File file) {
+		this.file = file; 
+		
+	}
+
+	@Override
+	public void run() {
+		doAction();		
 	}
 }

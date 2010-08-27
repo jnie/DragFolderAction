@@ -40,12 +40,12 @@ public class Property {
 			props = new SortedProperties();
 			props.load(url.openStream());
 		} catch (FileNotFoundException e) {
-			logger.info("Could not find the file: " + PROPERTYFILE);
+			logger.warning("Could not find the file: " + PROPERTYFILE);
 			if (logger.isLoggable(Level.ALL)) {
 				e.printStackTrace();
 			}
 		} catch (IOException e) {
-			logger.info(e.getMessage());
+			logger.warning(e.getMessage());
 			if (logger.isLoggable(Level.ALL)) {
 				e.printStackTrace();
 			}

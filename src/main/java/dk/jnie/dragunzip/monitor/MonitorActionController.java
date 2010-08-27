@@ -9,7 +9,7 @@ public class MonitorActionController {
 	private boolean found = false;
 
 	enum FileType {
-		ZIP, TXT, XML
+		ZIP, TXT, XML, MP3, WRK
 	};
 
 	public MonitorActionController() {
@@ -51,11 +51,22 @@ public class MonitorActionController {
 			ma = new MonitorActionXML();
 			found = true;
 			break;
+		case MP3:
+			ma = new MonitorActionMP3();
+			found = true;
+			break;
+		case WRK:
+			ma = new MonitorActionWRK();
+			found = true;
+			break;
 		default:
 			break;
 		}
 		if (ma != null) {
-			ma.doAction(file.getAbsoluteFile());
+			ma.setFile(file);
+			Thread t = new Thread(ma);
+			t.start();
+//			ma.doAction(file.getAbsoluteFile());
 		}
 	}
 

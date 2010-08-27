@@ -8,13 +8,12 @@ import java.util.logging.Logger;
 
 public class MonitorActionTxt implements MonitorActionInterface {
 	
-	private static Logger logger = Logger.getLogger("dk.jnie.dragunzip");
-	
 	private String NL = System.getProperty("line.separator");
 	private static final String ENCODING = "ISO-8859-1";
+	private File file;
 	
 	@Override
-	public void doAction(File file) {
+	public void doAction() {
 		logger.entering("MonitorActionTxt", "doAction(File)");
 		StringBuilder text = new StringBuilder();
 		Scanner scanner = null;
@@ -36,6 +35,18 @@ public class MonitorActionTxt implements MonitorActionInterface {
 			}
 		}
 
+	}
+
+	@Override
+	public void setFile(File file) {
+		this.file = file; 
+		
+	}
+
+	@Override
+	public void run() {
+		doAction();
+		
 	}
 
 }

@@ -1,5 +1,9 @@
 package dk.jnie.dragunzip;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 import dk.csc.util.prompt.ConsoleReader;
@@ -31,18 +35,43 @@ public class MonitorRunner {
 			folder = args[0];
 		}
 
+		prepareLog();
+		
 		Monitor mon = Monitor.getInstance();
 		mon.setFolder(folder);
-		Thread t = new Thread(mon, "Monitor");
-		t.start();
+		Thread monitor = new Thread(mon, "Monitor");
+		monitor.start();
 
+//		MonitorConsole monCon = new MonitorConsole(monitor);
+//		Thread monitorConsole = new Thread(monCon, "MonitorConsole");
+//		monitorConsole.start();
+//		
 		while (true) {
 			ConsoleReader cr = new ConsoleReader();
 			keyStroke = cr.getInput("Key 's' = stop monitoring.");
 			if ("s".equals(keyStroke)) {
-				t.interrupt();
+				monitor.interrupt();
 				break;
 			}
+		}
+	}
+	
+	private static void prepareLog() {
+		//Create if log folder does not exist.
+		File logFolder = new File("log");
+		
+		if(!logFolder.exists()) {
+			logFolder.mkdir();
+		}
+		
+		System.setProperty("java.util.logging.config.file",	"src/main/resources/logging.properties");
+		// This overwrites the current logging configuration
+		// to the one in the configuration file.
+		try {
+			LogManager.getLogManager().readConfiguration();
+		} catch (IOException ex) {
+			logger.log(Level.WARNING, "Problem loading the logging "
+					+ "configuration file", ex);
 		}
 
 	}

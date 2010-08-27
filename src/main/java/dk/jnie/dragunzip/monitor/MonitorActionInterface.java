@@ -1,8 +1,13 @@
 package dk.jnie.dragunzip.monitor;
 
 import java.io.File;
+import java.util.logging.Logger;
 
-public interface MonitorActionInterface {
+public interface MonitorActionInterface extends Runnable {
 
-	public void doAction(File file);
+	static Logger logger = Logger.getLogger("dk.jnie.dragunzip");
+	
+	public void doAction();
+	
+	public void setFile(File file);
 }
