@@ -2,10 +2,428 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2010-08-26T15:57:56</date>
-  <millis>1282831076753</millis>
-  <sequence>0</sequence>
-  <logger>dk.jnie.dragunzip</logger>
+  <date>2010-08-30T08:49:40</date>
+  <millis>1283150980907</millis>
+  <sequence>3</sequence>
+  <logger>dk.jnie.dragunzip.monitor</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.Monitor</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>No. of new files: 0</message>
+</record>
+<record>
+  <date>2010-08-30T08:49:42</date>
+  <millis>1283150982923</millis>
+  <sequence>6</sequence>
+  <logger>dk.jnie.dragunzip.monitor</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.Monitor</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>No. of new files: 0</message>
+</record>
+<record>
+  <date>2010-08-30T08:49:44</date>
+  <millis>1283150984923</millis>
+  <sequence>9</sequence>
+  <logger>dk.jnie.dragunzip.monitor</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.Monitor</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>No. of new files: 0</message>
+</record>
+<record>
+  <date>2010-08-30T08:49:46</date>
+  <millis>1283150986924</millis>
+  <sequence>12</sequence>
+  <logger>dk.jnie.dragunzip.monitor</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.Monitor</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>No. of new files: 1</message>
+</record>
+<record>
+  <date>2010-08-30T08:49:46</date>
+  <millis>1283150986924</millis>
+  <sequence>13</sequence>
+  <logger>dk.jnie.dragunzip.monitor</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.Monitor</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Trying to route... file: c:\xml\Do.wrk</message>
+</record>
+<record>
+  <date>2010-08-30T08:49:46</date>
+  <millis>1283150986924</millis>
+  <sequence>14</sequence>
+  <logger>dk.jnie.dragunzip.monitor.control</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.MonitorActionController</class>
+  <method>routeAction</method>
+  <thread>10</thread>
+  <message>Entering...</message>
+</record>
+<record>
+  <date>2010-08-30T08:49:46</date>
+  <millis>1283150986924</millis>
+  <sequence>15</sequence>
+  <logger>dk.jnie.dragunzip.monitor.control</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.MonitorActionController</class>
+  <method>routeAction</method>
+  <thread>10</thread>
+  <message>fileType = wrk, enum type name = ZIP</message>
+</record>
+<record>
+  <date>2010-08-30T08:49:46</date>
+  <millis>1283150986924</millis>
+  <sequence>16</sequence>
+  <logger>dk.jnie.dragunzip.monitor.control</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.MonitorActionController</class>
+  <method>routeAction</method>
+  <thread>10</thread>
+  <message>fileType = wrk, enum type name = TXT</message>
+</record>
+<record>
+  <date>2010-08-30T08:49:46</date>
+  <millis>1283150986924</millis>
+  <sequence>17</sequence>
+  <logger>dk.jnie.dragunzip.monitor.control</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.MonitorActionController</class>
+  <method>routeAction</method>
+  <thread>10</thread>
+  <message>fileType = wrk, enum type name = XML</message>
+</record>
+<record>
+  <date>2010-08-30T08:49:46</date>
+  <millis>1283150986924</millis>
+  <sequence>18</sequence>
+  <logger>dk.jnie.dragunzip.monitor.control</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.MonitorActionController</class>
+  <method>routeAction</method>
+  <thread>10</thread>
+  <message>fileType = wrk, enum type name = MP3</message>
+</record>
+<record>
+  <date>2010-08-30T08:49:46</date>
+  <millis>1283150986924</millis>
+  <sequence>19</sequence>
+  <logger>dk.jnie.dragunzip.monitor.control</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.MonitorActionController</class>
+  <method>routeAction</method>
+  <thread>10</thread>
+  <message>fileType = wrk, enum type name = WRK</message>
+</record>
+<record>
+  <date>2010-08-30T08:49:46</date>
+  <millis>1283150986924</millis>
+  <sequence>20</sequence>
+  <logger>dk.jnie.dragunzip.monitor.control</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.MonitorActionController</class>
+  <method>routeAction</method>
+  <thread>10</thread>
+  <message>Calling routeIt(File,FileType)</message>
+</record>
+<record>
+  <date>2010-08-30T08:49:48</date>
+  <millis>1283150988940</millis>
+  <sequence>22</sequence>
+  <logger>dk.jnie.dragunzip.monitor</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.Monitor</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>No. of new files: 1</message>
+</record>
+<record>
+  <date>2010-08-30T08:49:48</date>
+  <millis>1283150988940</millis>
+  <sequence>23</sequence>
+  <logger>dk.jnie.dragunzip.monitor</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.Monitor</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Trying to route... file: c:\xml\new.err</message>
+</record>
+<record>
+  <date>2010-08-30T08:49:48</date>
+  <millis>1283150988940</millis>
+  <sequence>24</sequence>
+  <logger>dk.jnie.dragunzip.monitor.control</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.MonitorActionController</class>
+  <method>routeAction</method>
+  <thread>10</thread>
+  <message>Entering...</message>
+</record>
+<record>
+  <date>2010-08-30T08:49:48</date>
+  <millis>1283150988940</millis>
+  <sequence>25</sequence>
+  <logger>dk.jnie.dragunzip.monitor.control</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.MonitorActionController</class>
+  <method>routeAction</method>
+  <thread>10</thread>
+  <message>fileType = err, enum type name = ZIP</message>
+</record>
+<record>
+  <date>2010-08-30T08:49:48</date>
+  <millis>1283150988940</millis>
+  <sequence>26</sequence>
+  <logger>dk.jnie.dragunzip.monitor.control</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.MonitorActionController</class>
+  <method>routeAction</method>
+  <thread>10</thread>
+  <message>fileType = err, enum type name = TXT</message>
+</record>
+<record>
+  <date>2010-08-30T08:49:48</date>
+  <millis>1283150988940</millis>
+  <sequence>27</sequence>
+  <logger>dk.jnie.dragunzip.monitor.control</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.MonitorActionController</class>
+  <method>routeAction</method>
+  <thread>10</thread>
+  <message>fileType = err, enum type name = XML</message>
+</record>
+<record>
+  <date>2010-08-30T08:49:48</date>
+  <millis>1283150988940</millis>
+  <sequence>28</sequence>
+  <logger>dk.jnie.dragunzip.monitor.control</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.MonitorActionController</class>
+  <method>routeAction</method>
+  <thread>10</thread>
+  <message>fileType = err, enum type name = MP3</message>
+</record>
+<record>
+  <date>2010-08-30T08:49:48</date>
+  <millis>1283150988940</millis>
+  <sequence>29</sequence>
+  <logger>dk.jnie.dragunzip.monitor.control</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.MonitorActionController</class>
+  <method>routeAction</method>
+  <thread>10</thread>
+  <message>fileType = err, enum type name = WRK</message>
+</record>
+<record>
+  <date>2010-08-30T08:49:48</date>
+  <millis>1283150988940</millis>
+  <sequence>30</sequence>
+  <logger>dk.jnie.dragunzip.monitor.control</logger>
+  <level>WARNING</level>
+  <class>dk.jnie.dragunzip.monitor.MonitorActionController</class>
+  <method>routeAction</method>
+  <thread>10</thread>
+  <message>Does not support filtype with extension: err</message>
+</record>
+<record>
+  <date>2010-08-30T08:50:00</date>
+  <millis>1283151000051</millis>
+  <sequence>32</sequence>
+  <logger>dk.jnie.dragunzip.monitor</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.Monitor</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>No. of new files: 0</message>
+</record>
+<record>
+  <date>2010-08-30T08:50:02</date>
+  <millis>1283151002052</millis>
+  <sequence>34</sequence>
+  <logger>dk.jnie.dragunzip.monitor</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.Monitor</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>No. of new files: 0</message>
+</record>
+<record>
+  <date>2010-08-30T08:50:04</date>
+  <millis>1283151004052</millis>
+  <sequence>36</sequence>
+  <logger>dk.jnie.dragunzip.monitor</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.Monitor</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>No. of new files: 0</message>
+</record>
+<record>
+  <date>2010-08-30T08:50:06</date>
+  <millis>1283151006053</millis>
+  <sequence>38</sequence>
+  <logger>dk.jnie.dragunzip.monitor</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.Monitor</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>No. of new files: 1</message>
+</record>
+<record>
+  <date>2010-08-30T08:50:06</date>
+  <millis>1283151006053</millis>
+  <sequence>39</sequence>
+  <logger>dk.jnie.dragunzip.monitor</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.Monitor</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>Trying to route... file: c:\xml\new.err</message>
+</record>
+<record>
+  <date>2010-08-30T08:50:06</date>
+  <millis>1283151006053</millis>
+  <sequence>40</sequence>
+  <logger>dk.jnie.dragunzip.monitor.control</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.MonitorActionController</class>
+  <method>routeAction</method>
+  <thread>10</thread>
+  <message>Entering...</message>
+</record>
+<record>
+  <date>2010-08-30T08:50:06</date>
+  <millis>1283151006053</millis>
+  <sequence>41</sequence>
+  <logger>dk.jnie.dragunzip.monitor.control</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.MonitorActionController</class>
+  <method>routeAction</method>
+  <thread>10</thread>
+  <message>fileType = err, enum type name = ZIP</message>
+</record>
+<record>
+  <date>2010-08-30T08:50:06</date>
+  <millis>1283151006053</millis>
+  <sequence>42</sequence>
+  <logger>dk.jnie.dragunzip.monitor.control</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.MonitorActionController</class>
+  <method>routeAction</method>
+  <thread>10</thread>
+  <message>fileType = err, enum type name = TXT</message>
+</record>
+<record>
+  <date>2010-08-30T08:50:06</date>
+  <millis>1283151006053</millis>
+  <sequence>43</sequence>
+  <logger>dk.jnie.dragunzip.monitor.control</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.MonitorActionController</class>
+  <method>routeAction</method>
+  <thread>10</thread>
+  <message>fileType = err, enum type name = XML</message>
+</record>
+<record>
+  <date>2010-08-30T08:50:06</date>
+  <millis>1283151006053</millis>
+  <sequence>44</sequence>
+  <logger>dk.jnie.dragunzip.monitor.control</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.MonitorActionController</class>
+  <method>routeAction</method>
+  <thread>10</thread>
+  <message>fileType = err, enum type name = MP3</message>
+</record>
+<record>
+  <date>2010-08-30T08:50:06</date>
+  <millis>1283151006053</millis>
+  <sequence>45</sequence>
+  <logger>dk.jnie.dragunzip.monitor.control</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.MonitorActionController</class>
+  <method>routeAction</method>
+  <thread>10</thread>
+  <message>fileType = err, enum type name = WRK</message>
+</record>
+<record>
+  <date>2010-08-30T08:50:06</date>
+  <millis>1283151006053</millis>
+  <sequence>46</sequence>
+  <logger>dk.jnie.dragunzip.monitor.control</logger>
+  <level>WARNING</level>
+  <class>dk.jnie.dragunzip.monitor.MonitorActionController</class>
+  <method>routeAction</method>
+  <thread>10</thread>
+  <message>Does not support filtype with extension: err</message>
+</record>
+<record>
+  <date>2010-08-30T08:50:11</date>
+  <millis>1283151011257</millis>
+  <sequence>48</sequence>
+  <logger>dk.jnie.dragunzip.monitor</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.Monitor</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>No. of new files: 0</message>
+</record>
+<record>
+  <date>2010-08-30T08:50:13</date>
+  <millis>1283151013257</millis>
+  <sequence>50</sequence>
+  <logger>dk.jnie.dragunzip.monitor</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.Monitor</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>No. of new files: 0</message>
+</record>
+<record>
+  <date>2010-08-30T08:50:15</date>
+  <millis>1283151015258</millis>
+  <sequence>52</sequence>
+  <logger>dk.jnie.dragunzip.monitor</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.Monitor</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>No. of new files: 0</message>
+</record>
+<record>
+  <date>2010-08-30T08:50:17</date>
+  <millis>1283151017258</millis>
+  <sequence>55</sequence>
+  <logger>dk.jnie.dragunzip.monitor</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.Monitor</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>No. of new files: 0</message>
+</record>
+<record>
+  <date>2010-08-30T08:50:19</date>
+  <millis>1283151019259</millis>
+  <sequence>58</sequence>
+  <logger>dk.jnie.dragunzip.monitor</logger>
+  <level>INFO</level>
+  <class>dk.jnie.dragunzip.monitor.Monitor</class>
+  <method>run</method>
+  <thread>10</thread>
+  <message>No. of new files: 0</message>
+</record>
+<record>
+  <date>2010-08-30T08:50:21</date>
+  <millis>1283151021259</millis>
+  <sequence>61</sequence>
+  <logger>dk.jnie.dragunzip.monitor</logger>
   <level>INFO</level>
   <class>dk.jnie.dragunzip.monitor.Monitor</class>
   <method>run</method>

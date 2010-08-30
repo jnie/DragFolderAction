@@ -13,7 +13,7 @@ import dk.jnie.dragunzip.monitor.Monitor;
 
 public class Property {
 	
-	private static Logger logger = Logger.getLogger("dk.jnie.dragunzip");
+	private static Logger logger = Logger.getLogger("dk.jnie.dragunzip.property");
 	private static final String PROPERTYFILE = "src/main/resources/monitor.properties";
 	public static final String MONITORFOLDER = "monitorfolder";
 	public static final String TIMER = "timer";

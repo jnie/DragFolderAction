@@ -1,10 +1,8 @@
 package dk.jnie.dragunzip.monitor;
 
 import java.io.File;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.logging.Logger;
 
 import dk.csc.util.properties.SortedProperties;
@@ -12,7 +10,7 @@ import dk.jnie.dragunzip.initializer.Property;
 
 public class Monitor implements Runnable {
 
-	private Logger logger = Logger.getLogger("dk.jnie.dragunzip");
+	private Logger logger = Logger.getLogger("dk.jnie.dragunzip.monitor");
 	private static Monitor monitorInstance = new Monitor();
 
 	private static SortedProperties props;
@@ -21,7 +19,7 @@ public class Monitor implements Runnable {
 
 	static Thread t;
 	private MonitorActionController mac; 
-	private static ArrayList<File> existingFiles = new ArrayList<File>();
+	private static ArrayList<String> existingFiles = new ArrayList<String>();
 	
 	/**
 	 * non instantiable
@@ -43,6 +41,7 @@ public class Monitor implements Runnable {
 
 	@Override
 	public void run() {
+		logger.fine("Entering...");
 		// Thread thisThread = Thread.currentThread();
 		Date startTime = new Date();
 		if (props == null || !doRun) {
@@ -72,6 +71,7 @@ public class Monitor implements Runnable {
 					logger.info("Trying to route... file: "+ file.getAbsolutePath());
 					mac.routeAction(file);
 				}
+//				updateExistingFiles(fileList);
 			} else {
 				//If not a directory create one.
 				folderObj.mkdir();
@@ -87,32 +87,38 @@ public class Monitor implements Runnable {
 				Thread.currentThread().interrupt(); // very important
 				break;
 			}
-			
 		}
 	}
 
 	
 	private File[] checkForNewFiles(File[] fileList) {
+		logger.fine("Entering...");
 		ArrayList<File> newFileList = new ArrayList<File>();
 		boolean exist = false;
 		for (File file:fileList) {
 			newFileList.add(file);
 		}
 		if (existingFiles.isEmpty()) {
-			existingFiles = newFileList;
+			for (File file:fileList) {
+				existingFiles.add(file.getName());
+			}
 		} else {
 			for (File file: fileList) {
-				if(existingFiles.contains(file)) {
+				if(existingFiles.contains(file.getName())) {
 					newFileList.remove(file);
-				} else {
-					existingFiles.add(file);
 				}
 			}
 
+			//Update existing files with the file names contained in folder as of now
+			existingFiles.clear();
+			for (File file:fileList) {
+				existingFiles.add(file.getName());
+			}
 			File[] files = new File[newFileList.size()];
 			newFileList.toArray(files);
 			return files;			
 		}
+		logger.fine("Exiting...");
 		return fileList;
 	}
 

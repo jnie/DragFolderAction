@@ -3,10 +3,14 @@ package dk.jnie.dragunzip.monitor;
 import java.io.File;
 import java.util.logging.Logger;
 
+import javax.swing.JOptionPane;
+
+import dk.jnie.dragunzip.gui.MessagePopup;
+
 public class MonitorActionController {
 
-	static Logger logger = Logger.getLogger("dk.jnie.dragunzip");
-	private boolean found = false;
+	static Logger logger = Logger.getLogger("dk.jnie.dragunzip.monitor.control");
+	private boolean found;
 
 	enum FileType {
 		ZIP, TXT, XML, MP3, WRK
@@ -17,6 +21,7 @@ public class MonitorActionController {
 
 	public void routeAction(File file) {
 		logger.info("Entering...");
+		found = false;
 		String fileName = file.getName();
 		String fileType = fileName.substring(fileName.lastIndexOf(".") + 1,
 				fileName.length());
@@ -30,6 +35,10 @@ public class MonitorActionController {
 		if (!found) {
 			logger.warning("Does not support filtype with extension: "
 					+ fileType);
+			MessagePopup mp = new MessagePopup();
+			
+			JOptionPane.showMessageDialog(null,mp.getRandomMessage(),
+				    "With the fileextension of '" + fileType + "' what did you expect?",JOptionPane.PLAIN_MESSAGE);
 		}
 		logger.exiting("MonitorActionComntroller", "routeAction");
 	}
@@ -68,6 +77,7 @@ public class MonitorActionController {
 			t.start();
 //			ma.doAction(file.getAbsoluteFile());
 		}
+		logger.fine("Exiting...");
 	}
 
 }
