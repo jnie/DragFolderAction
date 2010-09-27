@@ -13,7 +13,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 import dk.csc.util.properties.SortedProperties;
-import dk.jnie.dragunzip.initializer.Property;
+import dk.jnie.dragunzip.model.Property;
 
 public class MonitorActionZip implements MonitorActionInterface {
 	static Logger logger = Logger.getLogger("dk.jnie.dragunzip");

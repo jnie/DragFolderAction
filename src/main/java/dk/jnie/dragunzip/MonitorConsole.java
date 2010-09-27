@@ -1,7 +1,7 @@
 package dk.jnie.dragunzip;
 
 import dk.csc.util.prompt.ConsoleReader;
-import dk.jnie.dragunzip.initializer.Property;
+import dk.jnie.dragunzip.model.Property;
 
 public class MonitorConsole implements Runnable {
 

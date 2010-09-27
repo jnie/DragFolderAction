@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<synth>
+	<style id="default">
+		<opaque value="TRUE" />
+		<font name="Verdana" size="14" style="BOLD" />
+		<state>
+			<color value="black" type="FOREGROUND" />
+			<color value="white" type="BACKGROUND" />
+		</state>
+	</style>
+	<bind style="default" type="region" key=".*" />
+
+	<style id="textfield">
+		<state>
+			<font name="Verdana" size="12" style="bold" />
+			<color value="blue" type="BACKGROUND" />
+			<color value="blue" type="TEXT_BACKGROUND" />
+		</state>
+		<imagePainter method="textFieldBorder" path="/images/textfield_rounded.png"
+			sourceInsets="4 4 4 4" paintCenter="false" />
+		<insets top="4" bottom="4" right="4" left="4" />
+
+	</style>
+	<bind style="textfield" type="region" key="TextField" />
+
+	<style id="button">
+		<!-- Shift the text one pixel when pressed -->
+		<property key="Button.textShiftOffset" type="integer" value="1" />
+		<insets top="5" left="7" right="7" bottom="5" />
+		<state>
+			<font name="Verdana" size="12" style="BOLD" />
+			<imagePainter method="buttonBackground" path="/images/button.png"
+				sourceInsets="7 7 7 7" />
+		</state>
+		<!--
+			state value="PRESSED"> <font name="Verdana" size="12" style="BOLD" />
+			<imagePainter method="buttonBackground" path="/images/button.png"
+			sourceInsets="5 10 10 5" /> </state
+		-->
+	</style>
+	<bind style="button" type="region" key="Button" />
+
+	<style id="menu">
+		<opaque value="FALSE" />
+		<font name="Verdana" size="10" />
+		<state>
+			<color type="FOREGROUND" value="WHITE" />
+			<color type="TEXT_FOREGROUND" value="BLUE" />
+			<color type="TEXT_BACKGROUND" value="YELLOW" />
+			<color type="BACKGROUND" value="GRAY" />
+		</state>
+		<state value="SELECTED">
+			<color type="TEXT_FOREGROUND" value="BLUE" /> <!-- idref="selectionForegroundColor" /> -->
+		</state>
+		<state value="FOCUSED">
+			<color type="TEXT_FOREGROUND" value="BLUE" /> <!-- idref="selectionForegroundColor" /> -->
+		</state>
+		<state value="MOUSE_OVER">
+			<font name="Verdana" size="10" style="BOLD" />
+			<color type="TEXT_FOREGROUND" value="BLUE" /> <!-- idref="selectionForegroundColor" /> -->
+		</state>
+	</style>
+	<bind style="menu" type="region" key="Menu" />
+	<bind style="menu" type="region" key="MenuItem" />
+	<bind style="menu" type="region" key="RadioButtonMenuItem" />
+	<bind style="menu" type="region" key="ActionButtonMenuItem" />
+</synth>

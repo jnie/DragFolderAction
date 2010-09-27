@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
 
-import dk.jnie.dragunzip.gui.MessagePopup;
+import dk.jnie.dragunzip.view.MessagePopup;
 
 public class MonitorActionController {
 

@@ -6,16 +6,17 @@ import java.util.Date;
 import java.util.logging.Logger;
 
 import dk.csc.util.properties.SortedProperties;
-import dk.jnie.dragunzip.initializer.Property;
+import dk.jnie.dragunzip.model.Property;
+import dk.jnie.dragunzip.view.MessagePopup;
 
 public class Monitor implements Runnable {
 
 	private Logger logger = Logger.getLogger("dk.jnie.dragunzip.monitor");
 	private static Monitor monitorInstance = new Monitor();
 
-	private static SortedProperties props;
+	private static SortedProperties props; //Model
 	private volatile boolean doRun = true;
-	private static String argFolder;
+	private static String argFolder = "";
 
 	static Thread t;
 	private MonitorActionController mac; 
@@ -45,6 +46,7 @@ public class Monitor implements Runnable {
 		// Thread thisThread = Thread.currentThread();
 		Date startTime = new Date();
 		if (props == null || !doRun) {
+			MessagePopup.pop("I need some properties to work with!");
 			return;
 		}
 		String folder = argFolder;
@@ -53,6 +55,7 @@ public class Monitor implements Runnable {
 			folder =  props.getProperty(Property.MONITORFOLDER, argFolder);
 		}
 		if (folder == null) {
+			MessagePopup.pop("I need a folder name to monitor!");
 			logger.severe("I need a folder name to monitor!");
 			return; //I need a Folder
 		}
@@ -68,6 +71,9 @@ public class Monitor implements Runnable {
 				File[] newFileList = checkForNewFiles(fileList);
 				logger.info("No. of new files: "+ newFileList.length);
 				for (File file: newFileList) {
+					if(file.isDirectory()) {
+						continue;
+					}
 					logger.info("Trying to route... file: "+ file.getAbsolutePath());
 					mac.routeAction(file);
 				}
@@ -145,7 +151,12 @@ public class Monitor implements Runnable {
 		return doRun;
 	}
 
+	public void setDoRun(boolean doRun) {
+		this.doRun = doRun;
+	}
+
 	public void setFolder(String folder) {
 		argFolder = folder;
 	}
+
 }
