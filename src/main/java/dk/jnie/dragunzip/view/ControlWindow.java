@@ -2,6 +2,8 @@ package dk.jnie.dragunzip.view;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
@@ -67,7 +69,7 @@ public class ControlWindow extends JFrame {
 		jbnStop.addKeyListener(new MyKeyListener());		
 		jbnStart.addActionListener(new MyActionListener(ComponentID.B_START));
 		jbnStart.addKeyListener(new MyKeyListener());
-		
+
 		ControlWindowMenuBar cwm = new ControlWindowMenuBar();
 
 		setJMenuBar(cwm);
@@ -140,4 +142,5 @@ public class ControlWindow extends JFrame {
 			e.printStackTrace();
 		}
 	}
+
 }

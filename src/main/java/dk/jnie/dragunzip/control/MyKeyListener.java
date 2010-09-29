@@ -64,27 +64,30 @@ public class MyKeyListener implements KeyListener {
         
 	}
 
+	/**
+	 * Called when [Alt] is pressed 
+	 * @param keyTyped
+	 */
 	private void altKeyPressed(String keyTyped) {
 		if ("".equals(keyTyped)) {
 			return;
 		}
     	if ("s".equalsIgnoreCase(keyTyped)) {
-			if (!mon.isDoRun()) {
-				mon.setDoRun(true);
-				Thread monitor = new Thread(mon, "Monitor");
-				monitor.start();
-			}
+    		EventAction.startMonitor();
     	}
     	if ("p".equalsIgnoreCase(keyTyped)) {
-    		mon.setDoRun(false);
+    		EventAction.stopMonitor();
     	}
     	if ("x".equalsIgnoreCase(keyTyped)) {
-    		int question = MessagePopup.popQuestion(rb.getString("exit_question"));
-			if (question == 1) {
-				System.exit(0);
-			}
+    		EventAction.exitProgram(rb.getString("exit_question"));
     	}
-
+    	if ("e".equalsIgnoreCase(keyTyped)) {
+    		EventAction.editProperties();
+    	}
+	}
+	
+	public ResourceBundle getResourceBundle() {
+		return rb;
 	}
 	
 }

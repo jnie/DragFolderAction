@@ -23,14 +23,22 @@ public class MyActionListener implements ActionListener {
 	
 	private SortedProperties props = null;
 	private ResourceBundle rb = null;
-	private Monitor mon = Monitor.getInstance();
+	
 	private ComponentID componentID = null;
 
 	public MyActionListener(ComponentID id) {
+		init();
 		componentID = id;
 	}
 	
 	public MyActionListener() {
+		init();
+	}
+	
+	/**
+	 * Initialize variables
+	 */
+	private void init() {
 		props = Property.getProps();
 		
 		Locale locale = Locale.getDefault();
@@ -47,7 +55,8 @@ public class MyActionListener implements ActionListener {
 			buttonActionPerformed((JButton) source);
 		} else if (source instanceof JTextField) {
 			textFieldActionPerformed((JTextField) source);
-		} else if (source instanceof JMenuItem) {
+		} 
+		else if (source instanceof JMenuItem) {
 			menuActionPerformed((JMenuItem) source);
 		}
 		
@@ -73,14 +82,17 @@ public class MyActionListener implements ActionListener {
 					MessagePopup.pop("This needs some work");
 					break;
 				case MENU_HELP_ABOUT:
-					MessagePopup.pop("About the program\n v0.5beta");
+					MessagePopup.pop(rb.getString("about"));
 					break;
 				case MENU_CONFIG_EXIT:
-					int question = MessagePopup.popQuestion(rb.getString("exit_question"));
-					if (question == 1) {
-						System.exit(0);
-					}
-					break;					
+					EventAction.exitProgram(rb.getString("exit_question"));
+					break;
+				case MENU_CONFIG_STOP:
+					EventAction.stopMonitor();
+					break;
+				case MENU_CONFIG_START:
+					EventAction.startMonitor();
+					break;
 				default:
 			}
 		} else {
@@ -105,14 +117,10 @@ public class MyActionListener implements ActionListener {
 		//Using the Component_ID
 		if (componentID != null) {
 			if (componentID == ComponentID.B_STOP) {
-				mon.setDoRun(false);
+				EventAction.stopMonitor();
 			}
 			if (componentID == ComponentID.B_START) {
-				if (!mon.isDoRun()) {
-					mon.setDoRun(true);
-					Thread monitor = new Thread(mon, "Monitor");
-					monitor.start();
-				}
+				EventAction.startMonitor();
 			}
 
 		} else {

@@ -11,7 +11,7 @@ public class MyMouseListener implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		Object source = e.getSource();
-		logger.info(source.toString());
+		logger.info("mouseClicked, eventID: " + source.toString());
 		
 	}
 
