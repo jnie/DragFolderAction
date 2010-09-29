@@ -75,6 +75,12 @@ public class MyActionListener implements ActionListener {
 				case MENU_HELP_ABOUT:
 					MessagePopup.pop("About the program\n v0.5beta");
 					break;
+				case MENU_CONFIG_EXIT:
+					int question = MessagePopup.popQuestion(rb.getString("exit_question"));
+					if (question == 1) {
+						System.exit(0);
+					}
+					break;					
 				default:
 			}
 		} else {

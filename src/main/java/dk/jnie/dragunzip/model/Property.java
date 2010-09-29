@@ -19,6 +19,7 @@ public class Property {
 	public static final String TIMER = "timer";
 	public static final String OUTPUTFOLDER = "tmpfolder";
 	public static final String CLEARMONITORFOLDER = "clearmonitorfolder";
+	public static final String LAF = "laf";
 	private static SortedProperties props = null;
 	private Property property = new Property();
 	

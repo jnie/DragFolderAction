@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 import dk.csc.util.properties.SortedProperties;
 import dk.jnie.dragunzip.model.Property;
 import dk.jnie.dragunzip.monitor.Monitor;
+import dk.jnie.dragunzip.view.MessagePopup;
 
 public class MyKeyListener implements KeyListener {
 
@@ -76,6 +77,12 @@ public class MyKeyListener implements KeyListener {
     	}
     	if ("p".equalsIgnoreCase(keyTyped)) {
     		mon.setDoRun(false);
+    	}
+    	if ("x".equalsIgnoreCase(keyTyped)) {
+    		int question = MessagePopup.popQuestion(rb.getString("exit_question"));
+			if (question == 1) {
+				System.exit(0);
+			}
     	}
 
 	}

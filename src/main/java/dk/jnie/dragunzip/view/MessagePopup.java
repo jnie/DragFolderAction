@@ -35,12 +35,19 @@ public class MessagePopup {
 		JOptionPane.showMessageDialog(null,message,
 			    "I just had this pop into my mind",JOptionPane.PLAIN_MESSAGE);
 	}
+
+	public static int popQuestion(String message) {
+		return JOptionPane.showConfirmDialog(null,message,
+			    "I just had this pop into my mind",JOptionPane.YES_NO_OPTION);
+	}
 	
 	public static void main(String[] args) {
 
 		MessagePopup mp = new MessagePopup();
 		
-		JOptionPane.showMessageDialog(null,mp.getRandomMessage(),
-			    "What did you expect?",JOptionPane.PLAIN_MESSAGE);
+		mp.pop(mp.getRandomMessage());
+		
+		mp.popQuestion(mp.getRandomMessage());
+		
 	}
 }

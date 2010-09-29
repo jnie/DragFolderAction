@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Document   : synthGUI.xml
+    Created on : September 20, 2010
+    Author     : jnie 
+    Description:
+        Design for the gui
+-->
 <synth>
 	<style id="default">
 		<opaque value="TRUE" />
@@ -11,15 +18,14 @@
 	<bind style="default" type="region" key=".*" />
 
 	<style id="textfield">
+		<insets top="4" left="6" bottom="4" right="6" />
 		<state>
-			<font name="Verdana" size="12" style="bold" />
-			<color value="blue" type="BACKGROUND" />
-			<color value="blue" type="TEXT_BACKGROUND" />
+			<font name="Verdana" size="12" />
+			<color value="#D2DFF2" type="BACKGROUND" />
+			<color value="black" type="TEXT_FOREGROUND" />
 		</state>
 		<imagePainter method="textFieldBorder" path="/images/textfield_rounded.png"
 			sourceInsets="4 4 4 4" paintCenter="false" />
-		<insets top="4" bottom="4" right="4" left="4" />
-
 	</style>
 	<bind style="textfield" type="region" key="TextField" />
 
@@ -44,22 +50,16 @@
 		<opaque value="FALSE" />
 		<font name="Verdana" size="10" />
 		<state>
-			<color type="FOREGROUND" value="WHITE" />
-			<color type="TEXT_FOREGROUND" value="BLUE" />
-			<color type="TEXT_BACKGROUND" value="YELLOW" />
-			<color type="BACKGROUND" value="GRAY" />
-		</state>
-		<state value="SELECTED">
-			<color type="TEXT_FOREGROUND" value="BLUE" /> <!-- idref="selectionForegroundColor" /> -->
-		</state>
-		<state value="FOCUSED">
-			<color type="TEXT_FOREGROUND" value="BLUE" /> <!-- idref="selectionForegroundColor" /> -->
+			<color type="FOREGROUND" value="black" />
+			<color type="TEXT_FOREGROUND" value="white" />
+			<color type="TEXT_BACKGROUND" value="gray" />
+			<color type="BACKGROUND" value="gray" />
 		</state>
 		<state value="MOUSE_OVER">
 			<font name="Verdana" size="10" style="BOLD" />
-			<color type="TEXT_FOREGROUND" value="BLUE" /> <!-- idref="selectionForegroundColor" /> -->
 		</state>
 	</style>
+	<bind style="menu" type="region" key="MenuBar" />
 	<bind style="menu" type="region" key="Menu" />
 	<bind style="menu" type="region" key="MenuItem" />
 	<bind style="menu" type="region" key="RadioButtonMenuItem" />

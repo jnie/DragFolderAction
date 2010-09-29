@@ -2,8 +2,6 @@ package dk.jnie.dragunzip.view;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
@@ -16,10 +14,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.plaf.synth.SynthLookAndFeel;
 
 import dk.csc.util.file.FileUtil;
@@ -70,13 +68,15 @@ public class ControlWindow extends JFrame {
 		jbnStart.addActionListener(new MyActionListener(ComponentID.B_START));
 		jbnStart.addKeyListener(new MyKeyListener());
 		
-		ControlWindowMenu cwm = new ControlWindowMenu();
+		ControlWindowMenuBar cwm = new ControlWindowMenuBar();
 
 		setJMenuBar(cwm);
 		
 		this.setSize(600, 400);
 		this.setLocation(300, 200);
-		setSynthLookAndFeel(this);
+		
+		//Now this will set the LAF(Look & Feel)
+		setLookAndFeel();
 		SwingUtilities.updateComponentTreeUI(this);
         this.pack();
         
@@ -97,14 +97,26 @@ public class ControlWindow extends JFrame {
 		this.monitor = monitor;
 	}
 	
-	private void setSynthLookAndFeel(JFrame jf) {
+	private void setLookAndFeel() {
+		String laf = props.getProperty(Property.LAF);
 		final SynthLookAndFeel slaf = new SynthLookAndFeel();
+		
 		try {
-			slaf.load(FileUtil.getStreamSource(
+			// Check if Synth is the chosen one.
+			if ("Synth".equalsIgnoreCase(laf)) {
+				slaf.load(FileUtil.getStreamSource(
 					"file:src/main/resources/synthGUI.xml").getInputStream(),
 					UserControl.class);
-			UIManager.setLookAndFeel(slaf);
-			SwingUtilities.updateComponentTreeUI(jf);
+				UIManager.setLookAndFeel(slaf);
+				return;
+			}
+			// Otherwise see what is possible, and choose the one from the properties file  
+		    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+		        if (laf.equals(info.getName())) {
+		            UIManager.setLookAndFeel(info.getClassName());
+		            return;
+		        }
+		    }
 		} catch (final ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -115,6 +127,15 @@ public class ControlWindow extends JFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (final NullPointerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
