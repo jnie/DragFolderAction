@@ -15,6 +15,7 @@ import dk.jnie.dragunzip.model.Property;
 import dk.jnie.dragunzip.monitor.Monitor;
 import dk.jnie.dragunzip.view.ComponentID;
 import dk.jnie.dragunzip.view.ControlWindow;
+import dk.jnie.dragunzip.view.ControlWindowMenuBar;
 import dk.jnie.dragunzip.view.MessagePopup;
 
 public class MyActionListener implements ActionListener {
@@ -92,6 +93,13 @@ public class MyActionListener implements ActionListener {
 					break;
 				case MENU_CONFIG_START:
 					EventAction.startMonitor();
+					break;
+				case MENU_VIEW_UK:
+					EventAction.changeLanguage(ComponentID.MENU_VIEW_UK);
+					source.getParent().getParent().repaint();
+					break;
+				case MENU_VIEW_DK:
+					EventAction.changeLanguage(ComponentID.MENU_VIEW_DK);
 					break;
 				default:
 			}

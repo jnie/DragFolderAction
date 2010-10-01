@@ -1,6 +1,9 @@
 package dk.jnie.dragunzip.control;
 
+import dk.csc.util.properties.SortedProperties;
+import dk.jnie.dragunzip.model.Property;
 import dk.jnie.dragunzip.monitor.Monitor;
+import dk.jnie.dragunzip.view.ComponentID;
 import dk.jnie.dragunzip.view.MessagePopup;
 
 public class EventAction {
@@ -31,5 +34,19 @@ public class EventAction {
 	public static void editProperties() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public static void changeLanguage(ComponentID componentId) {
+		SortedProperties sp = Property.getProps();
+		switch(componentId) {
+		case MENU_VIEW_DK:
+			sp.setProperty(Property.RESOURCEBUNDLE, "da_DK");
+			break;
+		case MENU_VIEW_UK:
+			sp.setProperty(Property.RESOURCEBUNDLE, "en_UK");
+			break;
+		default:
+			sp.setProperty(Property.RESOURCEBUNDLE, "en_UK");
+		}
 	}
 }

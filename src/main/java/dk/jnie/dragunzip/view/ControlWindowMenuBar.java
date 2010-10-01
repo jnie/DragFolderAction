@@ -24,8 +24,8 @@ public class ControlWindowMenuBar extends JMenuBar {
 	private static final long serialVersionUID = 1L;
 
 	// Where the GUI is created:
-	JMenu configMenu, helpMenu;
-	JMenuItem menuEditItem,menuAboutItem,menuExitItem,menuStartItem,menuStopItem;
+	JMenu configMenu, viewMenu, helpMenu;
+	JMenuItem menuEditItem,menuAboutItem,menuExitItem,menuStartItem,menuStopItem,menuLangUkItem,menuLangDkItem;
 	JRadioButtonMenuItem rbMenuItem;
 	JCheckBoxMenuItem cbMenuItem;
 
@@ -43,6 +43,12 @@ public class ControlWindowMenuBar extends JMenuBar {
 				rb.getString("menu_config_accessctx"));
 		add(configMenu);
 
+		viewMenu= new JMenu(rb.getString("menu_view"));
+		configMenu.setMnemonic(KeyEvent.VK_V);
+		configMenu.getAccessibleContext().setAccessibleDescription(
+				rb.getString("menu_view_accessctx"));
+		add(viewMenu);
+		
 		// Build the Help menu
 		helpMenu = new JMenu(rb.getString("menu_help"));
 		helpMenu.setMnemonic(KeyEvent.VK_H);
@@ -91,6 +97,27 @@ public class ControlWindowMenuBar extends JMenuBar {
 				rb.getString("menu_config_exit_accessctx"));
 		configMenu.add(menuExitItem);
 
+		//build content in view menu
+		//UK
+		menuLangUkItem = new JMenuItem(rb.getString("menu_view_uk"),
+				KeyEvent.VK_U);
+		menuLangUkItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_U,
+				ActionEvent.ALT_MASK));
+		menuLangUkItem.getAccessibleContext().setAccessibleDescription(
+				rb.getString("menu_view_uk_accessctx"));
+		addListeners(menuLangUkItem, ComponentID.MENU_VIEW_UK);
+		//DK
+		menuLangDkItem = new JMenuItem(rb.getString("menu_view_dk"),
+				KeyEvent.VK_D);
+		menuLangDkItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D,
+				ActionEvent.ALT_MASK));
+		menuLangDkItem.getAccessibleContext().setAccessibleDescription(
+				rb.getString("menu_view_dk_accessctx"));
+		addListeners(menuLangDkItem, ComponentID.MENU_VIEW_DK);
+		
+		viewMenu.add(menuLangUkItem);
+		viewMenu.add(menuLangDkItem);
+		
 		// Build second menu in the menu bar.
 		menuAboutItem = new JMenuItem(rb.getString("menu_help_about"),
 				KeyEvent.VK_A);
