@@ -2,8 +2,12 @@ package dk.jnie.dragunzip.view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenu;
@@ -17,12 +21,17 @@ import dk.jnie.dragunzip.control.MyActionListener;
 import dk.jnie.dragunzip.control.MyKeyListener;
 import dk.jnie.dragunzip.model.Property;
 
-public class ControlWindowMenuBar extends JMenuBar {
+public class ControlWindowMenuBar extends JMenuBar implements PropertyChangeListener {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
+	private Logger logger = Logger.getLogger("dk.jnie.dragunzip.view");
+	private Locale locale = Locale.getDefault();
+	private SortedProperties props = null; 
+	private ResourceBundle rb = null;
+	
 	// Where the GUI is created:
 	JMenu configMenu, viewMenu, helpMenu;
 	JMenuItem menuEditItem,menuAboutItem,menuExitItem,menuStartItem,menuStopItem,menuLangUkItem,menuLangDkItem;
@@ -30,11 +39,10 @@ public class ControlWindowMenuBar extends JMenuBar {
 	JCheckBoxMenuItem cbMenuItem;
 
 	public ControlWindowMenuBar() {
-		SortedProperties props = Property.getProps();
+		props = Property.getProps();
 
-		Locale locale = Locale.getDefault();
 		locale = new Locale(props.getProperty("resourcebundle"));
-		ResourceBundle rb = ResourceBundle.getBundle("language", locale);
+		rb = ResourceBundle.getBundle("language", locale);
 		
 		// Build the first menu.
 		configMenu = new JMenu(rb.getString("menu_config"));
@@ -43,7 +51,7 @@ public class ControlWindowMenuBar extends JMenuBar {
 				rb.getString("menu_config_accessctx"));
 		add(configMenu);
 
-		viewMenu= new JMenu(rb.getString("menu_view"));
+		viewMenu = new JMenu(rb.getString("menu_view"));
 		configMenu.setMnemonic(KeyEvent.VK_V);
 		configMenu.getAccessibleContext().setAccessibleDescription(
 				rb.getString("menu_view_accessctx"));
@@ -128,6 +136,45 @@ public class ControlWindowMenuBar extends JMenuBar {
 		addListeners(menuAboutItem, ComponentID.MENU_HELP_ABOUT);
 		helpMenu.add(menuAboutItem);
 
+	}
+	
+	private void updateGUILables() {
+		configMenu.setText(rb.getString("menu_config"));
+		viewMenu.setText(rb.getString("menu_view"));
+		helpMenu.setText(rb.getString("menu_help"));
+		
+		menuEditItem.setText(rb.getString("menu_config_edit"));
+		menuStartItem.setText(rb.getString("menu_config_start"));
+		menuStopItem.setText(rb.getString("menu_config_stop"));
+		menuExitItem.setText(rb.getString("menu_config_exit"));
+		
+		menuLangUkItem.setText(rb.getString("menu_view_uk"));
+		menuLangDkItem.setText(rb.getString("menu_view_dk"));
+		
+		menuAboutItem.setText(rb.getString("menu_help_about"));
+		
+	}
+	
+	/**
+	 * Changes in Property, needs special attention from the gui, when resourcebundle changes
+	 * all JLabels need a text change
+	 */
+	@Override
+	public void propertyChange(PropertyChangeEvent pce) {
+		String propertyName = pce.getPropertyName();
+		if (propertyName.equals(Property.RESOURCEBUNDLE)) {
+			locale = new Locale(props.getProperty("resourcebundle"));
+			rb = ResourceBundle.getBundle("language", locale);
+			updateGUILables();
+		}
+
+		if (logger.isLoggable(Level.INFO)) {
+			String propertyOldValue = (String) pce.getOldValue();
+			String propertyNewValue = (String) pce.getNewValue();
+			logger.info("PropertyName = " + propertyName);
+			logger.info("PropertyOldValue = " + propertyOldValue);
+			logger.info("PropertyNewValue = " + propertyNewValue);
+		}
 	}
 	
 	private void addListeners(JMenuItem menuItem, ComponentID componentId) {

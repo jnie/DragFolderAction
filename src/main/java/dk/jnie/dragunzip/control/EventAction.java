@@ -37,16 +37,16 @@ public class EventAction {
 	}
 
 	public static void changeLanguage(ComponentID componentId) {
-		SortedProperties sp = Property.getProps();
+		Property prop = Property.getInstance();
 		switch(componentId) {
 		case MENU_VIEW_DK:
-			sp.setProperty(Property.RESOURCEBUNDLE, "da_DK");
+			prop.setResourcebundle("da_DK");
 			break;
 		case MENU_VIEW_UK:
-			sp.setProperty(Property.RESOURCEBUNDLE, "en_UK");
+			prop.setResourcebundle("en_UK");
 			break;
 		default:
-			sp.setProperty(Property.RESOURCEBUNDLE, "en_UK");
+			prop.setResourcebundle("en_UK");
 		}
 	}
 }

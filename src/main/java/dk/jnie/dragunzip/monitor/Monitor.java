@@ -1,19 +1,24 @@
 package dk.jnie.dragunzip.monitor;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import dk.csc.util.properties.SortedProperties;
 import dk.jnie.dragunzip.model.Property;
 import dk.jnie.dragunzip.view.MessagePopup;
 
-public class Monitor implements Runnable {
+public class Monitor implements Runnable, PropertyChangeListener{
 
 	private Logger logger = Logger.getLogger("dk.jnie.dragunzip.monitor");
 	private static Monitor monitorInstance = new Monitor();
-
+	
 	private static SortedProperties props; //Model
 	private volatile boolean doRun = true;
 	private static String argFolder = "";
@@ -157,6 +162,27 @@ public class Monitor implements Runnable {
 
 	public void setFolder(String folder) {
 		argFolder = folder;
+	}
+
+	/**
+	 * Changes in Property, needs special attention from the monitor
+	 */
+	@Override
+	public void propertyChange(PropertyChangeEvent pce) {
+		String propertyName = pce.getPropertyName();
+//		if (propertyName.equals(Property.TIMER)) {
+//			
+//		}
+		props = Property.getProps();
+
+		if (logger.isLoggable(Level.INFO)) {
+			String propertyOldValue = (String) pce.getOldValue();
+			String propertyNewValue = (String) pce.getNewValue();
+			logger.info("PropertyName = " + propertyName);
+			logger.info("PropertyOldValue = " + propertyOldValue);
+			logger.info("PropertyNewValue = " + propertyNewValue);
+		}
+
 	}
 
 }
