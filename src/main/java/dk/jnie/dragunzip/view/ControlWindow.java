@@ -3,6 +3,7 @@ package dk.jnie.dragunzip.view;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.FlowLayout;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeEvent;
@@ -25,7 +26,6 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.UIManager.LookAndFeelInfo;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.plaf.synth.SynthLookAndFeel;
@@ -33,6 +33,7 @@ import javax.swing.plaf.synth.SynthLookAndFeel;
 import dk.csc.util.file.FileUtil;
 import dk.csc.util.properties.SortedProperties;
 import dk.jnie.dragunzip.control.MyActionListener;
+import dk.jnie.dragunzip.control.MyFocusListener;
 import dk.jnie.dragunzip.control.MyKeyListener;
 import dk.jnie.dragunzip.control.UserControl;
 import dk.jnie.dragunzip.model.Property;
@@ -51,7 +52,7 @@ public class ControlWindow extends JFrame implements PropertyChangeListener {
 	private static JButton jbnStop, jbnStart = null;
 	private JPanel buttonPanel = null;
 	private static JLabel lMonitor, lClearFolder, lTimer = null;
-	private JTextField jFolderMonitorName, jTxtTimer = null;
+	private JTextField jTxtFolderMonitorName, jTxtTimer = null;
 
 	private ResourceBundle rb = null;
 	private Locale locale = Locale.getDefault();
@@ -107,17 +108,19 @@ public class ControlWindow extends JFrame implements PropertyChangeListener {
 		lClearFolder = new JLabel(rb.getString("lbl_clear_folder"));
 		lTimer = new JLabel(rb.getString("lbl_timer"));
 
-		jFolderMonitorName = new JTextField(props
+		jTxtFolderMonitorName = new JTextField(props
 				.getProperty(Property.MONITORFOLDER), 20);
-		jFolderMonitorName.addActionListener(new MyActionListener(
+		jTxtFolderMonitorName.addActionListener(new MyActionListener(
 				ComponentID.TXTF_FOLDER));
-		jFolderMonitorName.addKeyListener(new MyKeyListener());
+		jTxtFolderMonitorName.addKeyListener(new MyKeyListener());
+		jTxtFolderMonitorName.addFocusListener(new MyFocusListener(ComponentID.TXTF_FOLDER));
 
 		jTxtTimer = new JTextField(props
 				.getProperty(Property.TIMER), 20);
 		jTxtTimer.addActionListener(new MyActionListener(
 				ComponentID.TXTF_TIMER));
 		jTxtTimer.addKeyListener(new MyKeyListener());
+		jTxtTimer.addFocusListener(new MyFocusListener(ComponentID.TXTF_TIMER));
 		
 		JCheckBox jCBClearFolder = new JCheckBox();
 		jCBClearFolder.addActionListener(new MyActionListener(
@@ -129,7 +132,9 @@ public class ControlWindow extends JFrame implements PropertyChangeListener {
 				rb.getString("brd_monitor_button")));
 		
 		jbnStop = new JButton(rb.getString("b_stop"));
+		jbnStop.setMnemonic(KeyEvent.VK_P);
 		jbnStart = new JButton(rb.getString("b_start"));
+		jbnStart.setMnemonic(KeyEvent.VK_S);
 		
 		buttonPanel.add(jbnStart);
 		buttonPanel.add(jbnStop);
@@ -144,8 +149,9 @@ public class ControlWindow extends JFrame implements PropertyChangeListener {
 		box0.add(lClearFolder);
 		box0.add(Box.createVerticalStrut(10));
 		box0.add(lTimer);
-		
-		box1.add(jFolderMonitorName);
+
+		box1.add(jTxtFolderMonitorName);
+		box1.setAlignmentX(LEFT_ALIGNMENT);
 		box1.add(jCBClearFolder);
 		box1.add(jTxtTimer);
 //		box1.setBorder(new BevelBorder(BevelBorder.LOWERED));
@@ -155,10 +161,11 @@ public class ControlWindow extends JFrame implements PropertyChangeListener {
 		box3.add(box1);
 //		box3.add(box2);
 
-		box4.add(box3);
+//		box4.add(box3);
 //		box4.setBorder(new BevelBorder(BevelBorder.LOWERED));
 //		box4.add(box1);
 		box5.add(box3);
+		box5.add(Box.createHorizontalStrut(10));
 //		box5.setBorder(new BevelBorder(BevelBorder.LOWERED));
 		box5.add(buttonPanel);
 		container.add(box5);
