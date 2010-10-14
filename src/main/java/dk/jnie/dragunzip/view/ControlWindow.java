@@ -49,16 +49,20 @@ public class ControlWindow extends JFrame implements PropertyChangeListener {
 
 	private Thread monitor = null;
 
-	private static JButton jbnStop, jbnStart = null;
+	JButton jbnStop, jbnStart = null;
 	private JPanel buttonPanel = null;
-	private static JLabel lMonitor, lClearFolder, lTimer = null;
-	private JTextField jTxtFolderMonitorName, jTxtTimer = null;
+	static JLabel lMonitor, lClearFolder, lTimer = null;
+	JTextField jTxtFolderMonitorName, jTxtTimer = null;
 
 	private ResourceBundle rb = null;
 	private Locale locale = Locale.getDefault();
 	private SortedProperties props = null;
 	private Container container;
 
+	public ControlWindow() {
+		new ControlWindow("Missing Title");
+	}
+	
 	public ControlWindow(String title) {
 		props = Property.getProps();
 

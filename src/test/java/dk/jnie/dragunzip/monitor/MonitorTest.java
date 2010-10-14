@@ -1,12 +1,13 @@
 package dk.jnie.dragunzip.monitor;
 
-import static org.junit.Assert.*;
-import dk.jnie.dragunzip.monitor.Monitor;
+import junit.framework.TestCase;
 
 import org.junit.Test;
 
-public class MonitorTest {
-
+public class MonitorTest extends TestCase {
+	
+	public final static String TEST_ALL_TEST_TYPE = "UNIT";
+	
 	@Test
 	public void testGetInstance() {
 		Monitor mon = Monitor.getInstance();
