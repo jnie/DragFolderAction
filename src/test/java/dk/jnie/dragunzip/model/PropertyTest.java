@@ -1,14 +1,15 @@
 package dk.jnie.dragunzip.model;
 
-import static org.junit.Assert.*;
+import junit.framework.TestCase;
 
 import org.junit.Test;
 
 import dk.csc.util.properties.SortedProperties;
-import dk.jnie.dragunzip.model.Property;
 
-public class PropertyTest {
+public class PropertyTest extends TestCase {
 
+	public final static String TEST_ALL_TEST_TYPE = "UNIT";
+	
 	@Test
 	public void testGetProps() {
 		SortedProperties sp = Property.getProps();

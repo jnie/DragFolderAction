@@ -7,14 +7,13 @@ import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JMenuItem;
 import javax.swing.JTextField;
 
 import dk.csc.util.properties.SortedProperties;
 import dk.jnie.dragunzip.model.Property;
-import dk.jnie.dragunzip.monitor.Monitor;
 import dk.jnie.dragunzip.view.ComponentID;
-import dk.jnie.dragunzip.view.ControlWindow;
 import dk.jnie.dragunzip.view.MessagePopup;
 
 public class MyActionListener implements ActionListener {
@@ -55,9 +54,10 @@ public class MyActionListener implements ActionListener {
 			buttonActionPerformed((JButton) source);
 		} else if (source instanceof JTextField) {
 			textFieldActionPerformed((JTextField) source);
-		} 
-		else if (source instanceof JMenuItem) {
+		} else if (source instanceof JMenuItem) {
 			menuActionPerformed((JMenuItem) source);
+		} else if (source instanceof JCheckBox) {
+			checkBoxActionPerformed((JCheckBox) source);
 		}
 		
 //		if (source == ControlWindow.getJbnStop()) {
@@ -93,6 +93,12 @@ public class MyActionListener implements ActionListener {
 				case MENU_CONFIG_START:
 					EventAction.startMonitor();
 					break;
+				case MENU_VIEW_UK:
+					EventAction.changeLanguage(ComponentID.MENU_VIEW_UK);
+					break;
+				case MENU_VIEW_DK:
+					EventAction.changeLanguage(ComponentID.MENU_VIEW_DK);
+					break;
 				default:
 			}
 		} else {
@@ -106,12 +112,27 @@ public class MyActionListener implements ActionListener {
 			if (componentID == ComponentID.TXTF_FOLDER) {
 				props.setProperty(Property.MONITORFOLDER, actionSource.getText());
 			}
+			if (componentID == ComponentID.TXTF_TIMER) {
+				props.setProperty(Property.TIMER, actionSource.getText());
+			}
 		} else {
 			logger.info("Need a ComponentID, otherwise I cannot identify the correct source component");
 		}
 		
 	}
 
+	private void checkBoxActionPerformed(JCheckBox actionSource) {
+		if (componentID != null) {
+			if (componentID == ComponentID.CHK_CLEAR_FOLDER) {
+				props.setProperty(Property.CLEARMONITORFOLDER, actionSource.getText());
+			}
+
+		} else {
+			logger.info("Need a ComponentID, otherwise I cannot identify the correct source component");
+		}
+		
+	}
+	
 	private void buttonActionPerformed(JButton actionSource) {
 		String sourceName = "";
 		//Using the Component_ID

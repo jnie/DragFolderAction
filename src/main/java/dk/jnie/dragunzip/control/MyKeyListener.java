@@ -2,27 +2,30 @@ package dk.jnie.dragunzip.control;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import dk.csc.util.properties.SortedProperties;
 import dk.jnie.dragunzip.model.Property;
 import dk.jnie.dragunzip.monitor.Monitor;
-import dk.jnie.dragunzip.view.MessagePopup;
 
-public class MyKeyListener implements KeyListener {
+public class MyKeyListener implements KeyListener, PropertyChangeListener {
 
 	private Logger logger = Logger.getLogger("dk.jnie.dragunzip.control");
 	
 	private SortedProperties props = null;
 	private ResourceBundle rb = null;
 	private Monitor mon = Monitor.getInstance();
-
+	private Locale locale = Locale.getDefault();
+	
+	
 	public MyKeyListener() {
 		props = Property.getProps();
 		
-		Locale locale = Locale.getDefault();
 		locale = new Locale(props.getProperty("resourcebundle"));
 	    rb = ResourceBundle.getBundle("language", locale);
 	}
@@ -90,4 +93,25 @@ public class MyKeyListener implements KeyListener {
 		return rb;
 	}
 	
+	/**
+	 * Changes in Property, needs special attention from the gui, when resourcebundle changes
+	 * all JLabels need a text change
+	 */
+	@Override
+	public void propertyChange(PropertyChangeEvent pce) {
+		String propertyName = pce.getPropertyName();
+		if (propertyName.equals(Property.RESOURCEBUNDLE)) {
+			locale = new Locale(props.getProperty("resourcebundle"));
+			rb = ResourceBundle.getBundle("language", locale);
+		}
+
+		if (logger.isLoggable(Level.INFO)) {
+			String propertyOldValue = (String) pce.getOldValue();
+			String propertyNewValue = (String) pce.getNewValue();
+			logger.info("PropertyName = " + propertyName);
+			logger.info("PropertyOldValue = " + propertyOldValue);
+			logger.info("PropertyNewValue = " + propertyNewValue);
+		}
+
+	}
 }
